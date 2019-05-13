@@ -3,5 +3,5 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/fabidton/media/
   #  - cp index.html $DEPLOYPATH
-    - cp -R feature $DEPLOYPATH
+    - cp -R feature/ $DEPLOYPATH
    # - cp -R js $DEPLOYPATH
