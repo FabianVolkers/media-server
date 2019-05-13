@@ -1,0 +1,544 @@
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- Font Awesome-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="./css/main.css">
+
+<nav id="navbar">
+  <header>Open Weather Map - Current Weather Data API Reference</header>
+  <hr>
+  <ul id="nav-list">
+    <li class="nav-list-item"><a href="#Description" class="nav-link">Description</a></li>
+    <li class="nav-list-item"><a href="#Single_location" class="nav-link">Single location</a>
+      <ul>
+        <li class="nav-list-item"><a href="#By_City_Name" class="nav-link">By City Name</a></li>
+        <li class="nav-list-item"><a href="#By_city_ID" class="nav-link">By city ID</a></li>
+        <li class="nav-list-item"><a href="#By_Geographic_Coordinates" class="nav-link">By geographic coordinates</a></li>
+        <li class="nav-list-item"><a href="#By_ZIP_code" class="nav-link">By ZIP code</a></li>
+      </ul>
+    </li>
+    <li class="nav-list-item"><a href="#Multiple_cities" class="nav-link">Multiple Cities</a>
+      <ul>
+        <li class="nav-list-item"><a href="#Cities_within_a_rectangle" class="nav-link">Cities within a Rectangle</a></li>
+        <li class="nav-list-item"><a href="#Cities_within_a_circle" class="nav-link">Cities within a Circle</a></li>
+        <li class="nav-list-item"><a href="#Several_city_ids" class="nav-link">Several City IDs</a></li>
+      </ul>
+    </li>
+    <li class="nav-list-item"><a href="#Bulk_download" class="nav-link">Bulk Download</a></li>
+    <li class="nav-list-item"><a href="#Weather_parameters_in_API_response" class="nav-link">Weather Parameters in API response</a>
+      <ul>
+        <li class="nav-list-item"><a href="#JSON" class="nav-link">JSON</a></li>
+        <li class="nav-list-item"><a href="#XML" class="nav-link">XML</a></li>
+        <li class="nav-list-item"><a href="#Weather_condition_codes" class="nav-link">Weather condition codes</a></li>
+        <li class="nav-list-item"><a href="#Min/Max_temperature" class="nav-link">Min/Max temperature</a></li>
+      </ul>
+    </li>
+    <li class="nav-list-item"><a href="#Other_features" class="nav-link">Other Features</a>
+      <ul>
+        <li class="nav-list-item"><a href="#Format" class="nav-link">Format</a></li>
+        <li class="nav-list-item"><a href="#Units_Format" class="nav-link">Units Format</a></li>
+        <li class="nav-list-item"><a href="#Multilingual_support" class="nav-link">Multilingual support</a></li>
+        <li class="nav-list-item"><a href="#Call_back_function_for_JS" class="nav-link">Call back function for JS</a></li>
+      </ul>
+    </li>
+  </ul>
+
+</nav>
+<main id="main-doc">
+  <section id="Description" class="main-section">
+    <header>Description</header>
+    <p>Access current weather data for any location on Earth including over 200,000 cities! Current weather is frequently updated based on global models and data from more than 40,000 weather stations. Data is available in JSON, XML, or HTML format.</p>
+    <div class="info-box">There is a possibility to receive a central district of the city/town with its own parameters (geographic coordinates/id/name) in API response. Example</div>
+  </section>
+  <hr>
+  <section id="Single_location" class="main-section">
+    <header class="major-section">Single location</header>
+    <p>Call weather data for a single location.</p>
+    <section id="By_City_Name" class="main-section">
+      <header>By City Name</header>
+      <h5>Description:</h5>
+      <p>
+        You can call by city name or city name and country code. API responds with a list of results that match a searching word.</p>
+      <h5>API call:</h5>
+      <ul>
+        <li>api.openweathermap.org/data/2.5/weather?q={city name}</li>
+        <li>api.openweathermap.org/data/2.5/weather?q={city name},{country code}</li>
+      </ul>
+      <h5>Parameters:</h5>
+      <ul>
+        <li><b>q</b> city name and country code divided by comma, use ISO 3166 country codes</li>
+      </ul>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li><a href="api.openweathermap.org/data/2.5/weather?q=London">api.openweathermap.org/data/2.5/weather?q=London</a></li>
+        <li><a href="api.openweathermap.org/data/2.5/weather?q=London,uk">api.openweathermap.org/data/2.5/weather?q=London,uk</a></li>
+      </ul>
+    </section>
+    <hr>
+    <section id="By_city_ID" class="main-section">
+      <header>By city ID</header>
+      <h5>Description:</h5>
+      <p>You can call by city ID. API responds with exact result. <br>List of city ID city.list.json.gz can be downloaded here: <a href="http://bulk.openweathermap.org/sample/">http://bulk.openweathermap.org/sample/</a></p>
+      <div class="info-box">We recommend to call API by city ID to get unambiguous result for your city.</div>
+      <h5>Parameters:</h5>
+      <ul>
+        <li>
+          <b>id</b> City ID
+        </li>
+      </ul>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li>
+          <a href="api.openweathermap.org/data/2.5/weather?id=2172797" target="_blank">api.openweathermap.org/data/2.5/weather?id=2172797</a>
+        </li>
+      </ul>
+    </section>
+    <hr>
+    <section id="By_Geographic_Coordinates" class="main-section">
+      <header>By geographic coordinates</header>
+      <h5>API call:</h5>
+      <ul>
+        <li>api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}</li>
+      </ul>
+      <h5>Parameters:</h5>
+      <ul>
+        <li><b>lat, lon</b> coordinates of the location of your interest</li>
+      </ul>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li>
+          <a href="api.openweathermap.org/data/2.5/weather?lat=35&lon=139" target="_blank">api.openweathermap.org/data/2.5/weather?lat=35&lon=139</a>
+        </li>
+      </ul>
+      <h5>API response:</h5>
+      <pre><code>{"coord":{"lon":139,"lat":35},
+  "sys":{"country":"JP","sunrise":1369769524,"sunset":1369821049},
+  "weather":[{"id":804,"main":"clouds","description":"overcast clouds","icon":"04n"}],
+  "main":{"temp":289.5,"humidity":89,"pressure":1013,"temp_min":287.04,"temp_max":292.04},
+  "wind":{"speed":7.31,"deg":187.002},
+  "rain":{"3h":0},
+  "clouds":{"all":92},
+  "dt":1369824698,
+  "id":1851632,
+  "name":"Shuzenji",
+  "cod":200}</code></pre>
+    </section>
+    <hr>
+    <section id="By_ZIP_code" class="main-section">
+      <header>By ZIP code</header>
+      <h5>API call:</h5>
+      <ul>
+        <li>api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}</li>
+      </ul>
+      <h5>Parameters:</h5>
+      <ul>
+        <li><b>zip</b> zip code</li>
+      </ul>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li>
+          <a href="api.openweathermap.org/data/2.5/weather?zip=94040,us" target="_blank">api.openweathermap.org/data/2.5/weather?zip=94040,us</a>
+        </li>
+      </ul>
+      <h5>API response:</h5>
+      <pre><code>{"coord":{"lon":-122.09,"lat":37.39},
+  "sys":{"type":3,"id":168940,"message":0.0297,"country":"US","sunrise":1427723751,"sunset":1427768967},
+  "weather":[{"id":800,"main":"Clear","description":"Sky is Clear","icon":"01n"}],
+  "base":"stations",
+  "main":{"temp":285.68,"humidity":74,"pressure":1016.8,"temp_min":284.82,"temp_max":286.48},
+  "wind":{"speed":0.96,"deg":285.001},
+  "clouds":{"all":0},
+  "dt":1427700245,
+  "id":0,
+  "name":"Mountain View",
+  "cod":200}</code></pre>
+    </section>
+  </section>
+  <hr>
+  <section id="Multiple_cities" class="main-section">
+    <header class="major-section">Multiple cities</header>
+    <section id="Cities_within_a_rectangle" class="main-section">
+      <header>Cities within a rectangle</header>
+      <h5>Description</h5>
+      <p>JSON returns the data from cities within the defined rectangle specified by the geographic coordinates.</p>
+      <h5>Parameters</h5>
+      <ul>
+        <li><b>bbox</b> bounding box [lon-left,lat-bottom,lon-right,lat-top,zoom]</li>
+        <li><b>callback</b> javascript functionName</li>
+        <li><b>cluster</b> use server clustering of points. Possible values ​​are [yes, no]</li>
+        <li><b>lang</b> language [ru, en ... ]</li>
+      </ul>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li>
+          <a href="http://api.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10" target="_blank">http://api.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10</a></li>
+      </ul>
+    </section>
+    <hr>
+    <section id="Cities_within_a_circle" class="main-section">
+      <header>Cities within a circle</header>
+      <h5>Description</h5>
+      <p>JSON returns data from cities laid within definite circle that is specified by center point ('lat', 'lon') and expected number of cities ('cnt') around this point. The default number of cities is 10, the maximum is 50.</p>
+      <h5>Parameters</h5>
+      <ul>
+        <li><b>lat</b> latitude</li>
+        <li><b>lon</b> longitude</li>
+        <li><b>callback</b> functionName for JSONP callback.</li>
+        <li><b>cluster</b> use server clustering of points. Possible values ​​are [yes, no]</li>
+        <li><b>lang</b> language [ru, en ... ]</li>
+        <li><b>cnt</b> number of cities around the point that should be returned</li>
+      </ul>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li>
+          <a href="http://api.openweathermap.org/data/2.5/find?lat=55.5&lon=37.5&cnt=10" target="_blank">http://api.openweathermap.org/data/2.5/find?lat=55.5&lon=37.5&cnt=10</a></li>
+      </ul>
+    </section>
+    <hr>
+    <section id="Several_city_ids" class="main-section">
+      <header>Several city IDs</header>
+      <h5>Parameters</h5>
+      <ul>
+        <li><b>id</b> City ID</li>
+      </ul>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li>
+          <a href="http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric" target="_blank">http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric</a></li>
+      </ul>
+      <div class="info-box">The limit of locations is 20. <br> If you request weather data for several ID, then you will get the response only in JSON format (XML and HTML formats are not available for this case). <br>
+        <b>NOTE:</b> A single ID counts as a one API call! So, the above example is treated as a 3 API calls.</div>
+    </section>
+  </section>
+  <hr>
+  <section id="Bulk_download" class="main-section">
+    <header>Bulk Download</header>
+    <h5>Description</h5>
+    <p>We provide number of bulk files with current weather and forecasts. More information is on the <a href="https://openweathermap.org/bulk" target="_blank">Bulk</a> page</p>
+    <div class="info-box">Bulk downloading is available not for all accounts. To get more information please refer to the <a href="https://openweathermap.org/price" target="_blank">price.</a></div>
+    <h5>Examples of bulk files:</h5>
+    <ul>
+      <li>
+        <a href="http://bulk.openweathermap.org/sample/" target="_blank">http://bulk.openweathermap.org/sample/</a></li>
+    </ul>
+    <div class="info-box">The limit of locations is 20. <br> If you request weather data for several ID, then you will get the response only in JSON format (XML and HTML formats are not available for this case). <br>
+      <b>NOTE:</b> A single ID counts as a one API call! So, the above example is treated as a 3 API calls.</div>
+  </section>
+  <hr>
+  <section id="Weather_parameters_in_API_response" class="main-section">
+    <header class="major-section">Weather parameters in API response</header>
+    <p>Glossary of parameter names in API response</p>
+    <div class="info-box">If you do not see some of the parameters in your API response it means that these weather phenomena are just not happened for the time of measurement for the city or location chosen. Only really measured or calculated data is displayed in API response.</div>
+    <section id="JSON" class="main-section">
+      <header>JSON</header>
+      <h5>Example of API response:</h5>
+      <pre><code>{"coord":
+  {"lon":145.77,"lat":-16.92},
+  "weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04n"}],
+  "base":"cmc stations",
+  "main":{"temp":293.25,"pressure":1019,"humidity":83,"temp_min":289.82,"temp_max":295.37},
+  "wind":{"speed":5.1,"deg":150},
+  "clouds":{"all":75},
+  "rain":{"3h":3},
+  "dt":1435658272,
+  "sys":{"type":1,"id":8166,"message":0.0166,"country":"AU","sunrise":1435610796,"sunset":1435650870},
+  "id":2172797,
+  "name":"Cairns",
+  "cod":200}</code></pre>
+      <h5>Parameters:</h5>
+      <ul class="param-list">
+        <li><code>coord</code>
+          <ul>
+            <li><code>coord.lon</code> City geo location, longitude</li>
+            <li><code>coord.lat</code> City geo location, latitude</li>
+          </ul>
+        </li>
+        <li><code>weather</code> (more info Weather condition codes)
+          <ul>
+            <li><code>weather.id</code> Weather condition id</li>
+            <li><code>weather.main</code> Group of weather parameters (Rain, Snow, Extreme etc.)</li>
+            <li><code>weather.description</code> Weather condition within the group</li>
+            <li><code>weather.icon</code> Weather icon id</li>
+          </ul>
+        </li>
+        <li><code>base</code> Internal parameter</li>
+        <li><code>main</code>
+          <ul>
+            <li><code>main.temp</code> Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.</li>
+            <li><code>main.pressure</code> Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa</li>
+            <li><code>main.humidity</code> Humidity, %</li>
+            <li><code>main.temp_min</code> Minimum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius,
+              Imperial: Fahrenheit.</li>
+            <li><code>main.temp_max</code> Maximum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius,
+              Imperial: Fahrenheit.</li>
+            <li><code>main.sea_level</code> Atmospheric pressure on the sea level, hPa</li>
+            <li><code>main.grnd_level</code> Atmospheric pressure on the ground level, hPa</li>
+          </ul>
+        </li>
+        <li><code>wind</code>
+          <ul>
+            <li><code>wind.speed</code> Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.</li>
+            <li><code>wind.deg</code> Wind direction, degrees (meteorological)</li>
+          </ul>
+        </li>
+        <li><code>clouds</code>
+          <ul>
+            <li><code>clouds.all</code> Cloudiness, %</li>
+          </ul>
+        </li>
+        <li><code>rain</code>
+          <ul>
+            <li><code>rain.1h</code> Rain volume for the last 1 hour, mm</li>
+            <li><code>rain.3h</code> Rain volume for the last 3 hours, mm</li>
+          </ul>
+        </li>
+        <li><code>dt</code> Time of data calculation, unix, UTC</li>
+        <li><code>sys</code>
+          <ul>
+            <li><code>sys.type</code> Internal parameter</li>
+            <li><code>sys.id</code> Internal parameter</li>
+            <li><code>sys.message</code> Internal parameter</li>
+            <li><code>sys.country</code> Country code (GB, JP etc.)</li>
+            <li><code>sys.sunrise</code> Sunrise time, unix, UTC</li>
+            <li><code>sys.sunset</code> Sunset time, unix, UTC</li>
+          </ul>
+        </li>
+        <li><code>id</code> City ID</li>
+        <li><code>name</code> City name</li>
+        <li><code>cod</code> Internal parameter</li>
+      </ul>
+    </section>
+    <section id="XML" class="main-section">
+      <header>XML</header>
+      <h5>Example of API response:</h5>
+      <pre><code>&lt;current&gt;
+    &lt;city id="2643741" name="City of London"&gt;
+     &lt;coord lon="-0.09" lat="51.51"&gt;
+     &lt;country&gt;GB&lt;&#47;country&gt;
+     &lt;sun rise="2015-06-30T03:46:57" set="2015-06-30T20:21:12"&gt;
+    &lt;&#47;city&gt;
+    &lt;temperature value="72.34" min="66.2" max="79.88" unit="fahrenheit"&#47;&gt;
+    &lt;humidity value="43" unit="%"&gt;
+    &lt;pressure value="1020" unit="hPa"&gt;
+    &lt;wind&gt;
+     &lt;speed value="7.78" name="Moderate breeze"&gt;
+     &lt;direction value="140" code="SE" name="SouthEast"&gt;
+    &lt;&#47;wind&gt;
+    &lt;clouds value="0" name="clear sky"&gt;
+    &lt;visibility value="10000"&gt;
+    &lt;precipitation mode="no"&gt;
+    &lt;weather number="800" value="Sky is Clear" icon="01d"&gt;
+    &lt;lastupdate value="2015-06-30T08:36:14"&gt;
+&lt;&#47;current&gt;</code></pre>
+      <h5>Parameters:</h5>
+      <ul class="param-list">
+        <li><code>city</code>
+          <ul>
+            <li><code>city.id</code> City ID</li>
+            <li><code>city.name</code> City name</li>
+            <li><code>city.coord</code>
+              <ul>
+                <li><code>city.coord.lon</code> City geo location, longitude</li>
+                <li><code>city.coord.lat</code> City geo location, latitude</li>
+              </ul>
+            </li>
+            <li><code>city.country</code> Country code (GB, JP etc.)</li>
+            <li><code>city.sun</code>
+              <ul>
+                <li><code>city.sun.rise</code> Sunrise time</li>
+                <li><code>city.sun.set Sunset time</code></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><code>temperature</code>
+          <ul>
+            <li><code>temperature.value</code> Temperature</li>
+            <li><code>temperature.min</code> Minimum temperature at the moment of calculation. This is deviation from 'temp' that is possible for large cities and megalopolises geographically expanded (use these parameter optionally).</li>
+            <li><code>temperature.max</code> Maximum temperature at the moment of calculation. This is deviation from 'temp' that is possible for large cities and megalopolises geographically expanded (use these parameter optionally).</li>
+            <li><code>temperature.unit</code> Unit of measurements. Possilbe valure is Celsius, Kelvin, Fahrenheit.</li>
+          </ul>
+        </li>
+        <li><code>humidity</code>
+          <ul>
+            <li><code>humidity.value</code> Humidity value</li>
+            <li><code>humidity.unit</code> %</li>
+          </ul>
+        </li>
+        <li><code>pressure</code>
+          <ul>
+            <li><code>pressure.value</code> Pressure value</li>
+            <li><code>pressure.unit</code> hPa</li>
+          </ul>
+        </li>
+        <li><code>wind</code>
+          <ul>
+            <li><code>wind.speed</code>
+              <ul>
+                <li><code>wind.speed.value</code> Wind speed, mps</li>
+                <li><code>wind.speed.name</code> Type of the wind</li>
+              </ul>
+            </li>
+            <li><code>wind.direction</code>
+              <ul>
+                <li><code>wind.direction.value</code> Wind direction, degrees (meteorological)</li>
+                <li><code>wind.direction.code</code> Code of the wind direction. Possilbe value is WSW, N, S etc.</li>
+                <li><code>wind.direction.name</code> Full name of the wind direction.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><code>clouds</code>
+          <ul>
+            <li><code>clouds.value</code> Cloudiness</li>
+            <li><code>clouds.name</code> Name of the cloudiness</li>
+          </ul>
+        </li>
+        <li><code>visibility</code>
+          <ul>
+            <li><code>visibility.value</code> Visibility, meter</li>
+          </ul>
+        </li>
+        <li><code>precipitation</code>
+          <ul>
+            <li><code>precipitation.value</code> Precipitation, mm</li>
+            <li><code>precipitation.mode</code> Possible values are 'no", name of weather phenomena as 'rain', 'snow'</li>
+          </ul>
+        </li>
+        <li><code>weather</code>
+          <ul>
+            <li><code>weather.number</code> Weather condition id</li>
+            <li><code>weather.value</code> Weather condition name</li>
+            <li><code>weather.icon</code> Weather icon id</li>
+          </ul>
+        </li>
+        <li><code>lastupdate</code>
+          <ul>
+            <li><code>lastupdate.value</code> Last time when data was updated</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section id="Weather_condition_codes" class="main-section">
+      <header>Weather condition codes</header>
+      <p>List of <a href="https://openweathermap.org/weather-conditions" target="_blank">weather condition codes</a> with icons (range of thunderstorm, drizzle, rain, snow, clouds, atmosphere including extreme conditions like tornado, hurricane etc.)</p>
+    </section>
+    <section id="Min/Max_temperature" class="main-section">
+      <header>Min/Max temperature</header>
+      <p>There is a difference between the current weather API and the forecast API</p>
+      <div class="info-box">Please, do not confuse min/max parameters in current weather API and forecast API. In current weather API temp_min and temp_max are optional parameters mean min / max temperature in the city at the current moment to see deviation from current temp
+        just for your reference. For large cities and megalopolises geographically expanded it might be applicable. In most cases both temp_min and temp_max parameters have the same volume as 'temp'. Please, use temp_min and temp_max parameters in current
+        weather API optionally.</div>
+      <h5>Example of current weather API response:</h5>
+      <pre><code>"main":{
+  "temp":306.15, //current temperature
+  "pressure":1013,
+  "humidity":44,
+  "temp_min":306, //min current temperature in the city
+  "temp_max":306 //max current temperature in the city
+  },</code></pre>
+      <h5>For comparison look at example of daily forecast weather API response:
+      </h5>
+      <pre><code>"dt":1406080800,
+"temp":{
+        "day":297.77,  //daily averaged temperature
+        "min":293.52, //daily min temperature
+        "max":297.77, //daily max temperature
+        "night":293.52, //night temperature
+        "eve":297.77, //evening temperature
+        "morn":297.77}, //morning temperature</code></pre>
+    </section>
+  </section>
+  <hr>
+  <section id="Other_features" class="main-section">
+    <header class="major-section">Other Features</header>
+    <section id="Format" class="main-section">
+      <header>Format</header>
+      <h5>Description:</h5>
+      <p>JSON format is used by default. To get data in XML or HTML formats just set up mode = xml or html.</p>
+
+      <h5>Parameters:</h5>
+      <ul>
+        <li>
+          <b>mode</b> - possible values are xml and html. If mode parameter is empty the format is JSON by default.</li>
+      </ul>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li>
+          JSON <a href="api.openweathermap.org/data/2.5/weather?q=London" target="_blank">api.openweathermap.org/data/2.5/weather?q=London</a>
+        </li>
+        <li>
+          XML <a href="api.openweathermap.org/data/2.5/weather?q=London&mode=xml" target="_blank">api.openweathermap.org/data/2.5/weather?q=London&mode=xml</a>
+        </li>
+        <li>
+          HTML <a href="api.openweathermap.org/data/2.5/weather?q=London&mode=html" target="_blank">api.openweathermap.org/data/2.5/weather?q=London&mode=html</a>
+        </li>
+      </ul>
+    </section>
+    <hr>
+    <section id="Units_Format" class="main-section">
+      <header>Units Format</header>
+      <h5>Description:</h5>
+      <p>
+        Standard, metric, and imperial units are available.</p>
+
+      <h5>Parameters:</h5>
+      <ul>
+        <li>
+          <b>units</b> metric, imperial. When you do not use units parameter, format is Standard by default.</li>
+      </ul>
+      <div class="info-box">Temperature is available in Fahrenheit, Celsius and Kelvin units.
+        <ul>
+          <li>
+            For temperature in Fahrenheit use units=imperial</li>
+          <li>For temperature in Celsius use units=metric</li>
+          <li>Temperature in Kelvin is used by default, no need to use units parameter in API call</li>
+        </ul>
+        List of all API parameters with units <a href="openweathermap.org/weather-data" target="_blank">openweathermap.org/weather-data</a></div>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li>
+          standard <a href="api.openweathermap.org/data/2.5/find?q=London" target="_blank">api.openweathermap.org/data/2.5/find?q=London</a></li>
+        <li>metric <a href="api.openweathermap.org/data/2.5/find?q=London&units=metric" target="_blank">api.openweathermap.org/data/2.5/find?q=London&units=metric</a></li>
+        <li>imperial <a href="api.openweathermap.org/data/2.5/find?q=London&units=imperial" target="_blank">api.openweathermap.org/data/2.5/find?q=London&units=imperial</a></li>
+      </ul>
+    </section>
+    <hr>
+    <section id="Multilingual_support" class="main-section">
+      <header>Multilingual Support</header>
+      <h5>Description:</h5>
+      <p>You can use lang parameter to get the output in your language. We support the following languages that you can use with the corresponded lang values: <br> Arabic - ar, Bulgarian - bg, Catalan - ca, Czech - cz, German - de, Greek - el, English -
+        en, Persian (Farsi) - fa, Finnish - fi, French - fr, Galician - gl, Croatian - hr, Hungarian - hu, Italian - it, Japanese - ja, Korean - kr, Latvian - la, Lithuanian - lt, Macedonian - mk, Dutch - nl, Polish - pl, Portuguese - pt, Romanian - ro,
+        Russian - ru, Swedish - se, Slovak - sk, Slovenian - sl, Spanish - es, Turkish - tr, Ukrainian - ua, Vietnamese - vi, Chinese Simplified - zh_cn, Chinese Traditional - zh_tw.<br><br> NOTE: Translation is only applied for the "description" field.</p>
+
+      <h5>API call:</h5>
+      <ul>
+        <li>http://api.openweathermap.org/data/2.5/forecast/daily?id=524901&lang={lang}</li>
+      </ul>
+      <h5>Parameters:</h5>
+      <ul>
+        <li><b>lang</b> language code</li>
+      </ul>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li><a href="http://api.openweathermap.org/data/2.5/forecast/daily?id=524901&lang=zh_cn" target="_blank">http://api.openweathermap.org/data/2.5/forecast/daily?id=524901&lang=zh_cn</a></li>
+      </ul>
+    </section>
+    <hr>
+    <section id="Call_back_function_for_JS" class="main-section">
+      <header>Call back function for JS</header>
+      <h5>Description:</h5>
+      <p>To use JavaScript code you can transfer callback functionName to JSONP callback.</p>
+      <h5>Examples of API calls:</h5>
+      <ul>
+        <li><a href="api.openweathermap.org/data/2.5/weather?q=London,uk&callback=test" target="_blank">api.openweathermap.org/data/2.5/weather?q=London,uk&callback=test</a></li>
+      </ul>
+    </section>
+  </section>
+</main>
+<footer>
+  <hr>
+  <p id="source">Data source: <a href="https://openweathermap.org/current" target="_blank">https://openweathermap.org/current</a><br>Coded by Fabian Volkers 2019</p>
+</footer>

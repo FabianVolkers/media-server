@@ -1,0 +1,70 @@
+.top-bar {
+    background-color: #002a8f;
+    border-color: #CF142B;
+    border-width: 10px;
+    border-style: solid;
+  }
+  .page {
+    background-color: #002a8f;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/bd/Flag_of_Cuba.svg");
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+  }
+  .red-border {
+    border-color: #CF142B;
+    border-width: 10px;
+    border-style: solid;
+  }
+  .timeline {
+    background-color: #FFFFFF;
+    margin-bottom: 40px;
+  }
+  .white-text {
+    color: white;
+  }
+  h5 {
+    font-weight: bold;
+  }
+  .header {
+    position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  .black-border {
+    border-color: #000000;
+    border-width: 1px;
+    border-style: solid;
+  }
+  .margin-10 {
+    margin-bottom: 10px;
+  }
+  .margin-20 {
+    margin-bottom: 20px;
+  }
+  .margin-40 {
+    margin-bottom: 40px;
+  }
+  .quote {
+    font-family: helvetica
+  }
+  footer {
+    background-color: #FFFFFF;
+    text-align: center;
+    font-family: helvetica;
+  }
+  .white-background {
+   background-color: #FFFFFF;
+  }
+  .impressum {
+    padding-top: 10px;
+    border-width: 1px;
+    border-color: #000000;
+    border-style: solid;
+    font-family: 'Lato';
+    ;
+  }
+  hr {
+    color: #000000;
+  }

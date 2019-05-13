@@ -1,0 +1,93 @@
+
+#title {
+    text-align: center;
+    padding-top: 50px;
+    font-size: 45px;
+  }
+  
+  main {
+    background-color: #c5d5c5;
+  }
+  main p {
+    text-align: center;
+    
+  }
+  
+  #countdown {
+    font-size: 50px;
+    padding-top: 10px;
+  }
+  
+  #map-section {
+    height: 400px;
+  }
+  
+  #map-div {
+    margin-left: 25vw;
+    width: 50vw;
+    height: 100%;
+  }
+  
+  #map {
+    width: 100%;
+    height: 100%;
+    scrolling: no;
+    border: 1px solid black;
+  }
+  
+  footer {
+    background-color: #e3e0cc;
+    padding-bottom: 10px;
+  }
+  footer p{
+    text-align: center;
+    
+  }
+  
+  /* For mobile phones */
+  @media only screen and (max-width: 800px){
+    #map-div {
+    margin-left: 2.5vw;
+    width: 95vw;
+    height: 100%;
+  }
+    #title {
+    text-align: center;
+    padding-top: 50px;
+    font-size: 25px;
+  }
+    #countdown {
+    font-size: 30px;
+    }
+    #map-section {
+ 
+  }
+  }
+
+   /* For mobile phones */
+   @media only screen and (max-device-width:800px){
+    #map-div {
+    margin-left: 2.5vw;
+    width: 95vw;
+    height: 100%;
+  }
+    #title {
+    text-align: center;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    font-size: 40px;
+  }
+    #countdown-section{
+    padding-bottom: 5vh;
+  }
+    #countdown {
+    font-size: 50px;
+    }
+    #date {
+        font-size: 30px;
+    }
+    #map-section {
+    height: 50vh;
+    margin-bottom: 15vh;
+  }
+  }
