@@ -46,8 +46,8 @@
     $json_a = json_decode($json, TRUE);
     foreach($json_a as $value) {
         echo strtotime($value["date"]);
-        echo date("Y-m-d");
-        if(strtotime($value["date"]) > date("Y-m-d")){
+        echo strtotime(date("Y-m-d"));
+        if(strtotime($value["date"]) > strtotime(date("Y-m-d"))){
             echo "<li><b>" . $value["city"] . "</b>  " . $value["date"] . "</li>";
         }
     }
