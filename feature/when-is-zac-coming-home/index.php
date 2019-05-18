@@ -30,7 +30,8 @@
     $counter = 0;
     foreach($json_a as $value) {
         if(strtotime($value["date"]) > strtotime(date("Y-m-d"))){
-            echo "<li><b>" . $value["city"] . "</b>  " . date_format("l, j F Y",strtotime($value["date"])) . "</li>";
+            echo strtotime($value["date"]);
+            echo "<li><b>" . $value["city"] . "</b>  " . date_format("l, j F Y",$value["date"]) . "</li>";
         }
     }
     ?>
