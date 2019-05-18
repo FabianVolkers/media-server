@@ -44,7 +44,7 @@
       <input id="new-city" type="text" required>
       <input id="new-date" type="date" required>
       <input id="new-flights" type="text" required>
-      <input type="submit" href="">
+      <input type="submit">
     </form>
   </section>
   <section id="map-section">
