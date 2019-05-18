@@ -32,16 +32,21 @@
     $jsonIterator = new RecursiveIteratorIterator(
         new RecursiveArrayIterator(json_decode($json, TRUE)),
         RecursiveIteratorIterator::SELF_FIRST);
-    
+    /*
     foreach ($jsonIterator as $key => $val) {
         if(is_array($val)) {
-            echo "<li>" . $val["city"] . $val["date"] . "</li>";
+            echo "<li><b>" . $val["city"] . "</b>  " . $val["date"] . "</li>";
         } else {
             //echo "$key => $val\n";
         }
     }
     echo fread(dataFile, filesize("data.json"));
     fclose($dataFile);
+    */
+    $json_a = json_decode($json, TRUE);
+    foreach($json_a as $value) {
+        echo "<li><b>" . $value["city"] . "</b>  " . $value["date"] . "</li>";
+    }
     ?>
     </ul>
     <form id="add-destination">
