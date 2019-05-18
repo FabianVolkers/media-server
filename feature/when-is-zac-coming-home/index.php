@@ -26,7 +26,7 @@
     <ul id="upcoming"></ul>
     <?php
     echo "Hello World!";
-    $dataFile = fopen("js/fixedata.json", "r") or die ("Unable to open file");
+    $dataFile = fopen("js/data.json", "r") or die ("Unable to open file");
     echo fread(dataFile, filesize("data.json"));
     fclose($dataFile);
     ?>
