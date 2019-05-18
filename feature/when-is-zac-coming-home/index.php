@@ -40,12 +40,7 @@
     }
     ?>
     </ul>
-    <form id="add-destination" action=
-      <?php
-        echo POST["new-city"];
-        echo POST["new-date"];
-        echo POST["new-flights"];
-      ?>>
+    <form id="add-destination" action="zac_flights.php">
       <input id="new-city" type="text" required>
       <input id="new-date" type="date" required>
       <input id="new-flights" type="text" required>
