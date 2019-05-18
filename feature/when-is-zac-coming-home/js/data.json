@@ -1,0 +1,23 @@
+[
+    {
+      "city" : "Berlin", 
+      "date" : "May 17, 2019 12:00:00",
+      "flights" : {
+        "leg1" : "SQ214"
+      }
+    },
+    {
+      "city" : "Perth",
+      "date" : "Jun 5, 2019 12:00:00"
+    },
+    {
+      "city" : "Newman",
+      "date" : "Jun 11, 2019 12:00:00"
+    },{
+      "city" : "Perth",
+      "date" : "Jun 25, 2019 12:00:00"
+    },{
+      "city" : "Berlin",
+      "date" : "Jun 28, 2019 12:00:00"
+    }
+  ]

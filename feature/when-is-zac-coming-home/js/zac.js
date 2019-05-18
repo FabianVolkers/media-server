@@ -1,17 +1,138 @@
+
+// Map constants and location calculation
+const DESTINATIONS = {
+  "Berlin" : {
+    "name" : "Berlin",
+    "lat": 52.5173278245712,
+    "lon": 13.388859900000057
+  },
+  "Perth" : {
+    "name": "Perth",
+    "lat": -31.953318351466255,
+    "lon": 115.85797280073166
+  },
+  "Gili" : {
+    "name": "Gili",
+    "lat": -8.357619621234008,
+    "lon": 116.08123739999996
+  },
+  "Newman" : {
+    "name": "Work",
+    "lat": -23.3207662,
+    "lon": 119.7566597
+  }
+  
+}
+
+arrival = {
+  "city" : "Berlin",
+  "date" : new Date("Jun 5, 2019 12:00:00"),
+  "flights" : {
+    "leg1" : "SQ214"
+  }
+}
+
+
+
+let arrivals = [
+  {
+    "city" : "Berlin", 
+    "date" : new Date("May 17, 2019 12:00:00"),
+    "flights" : {
+      "leg1" : "SQ214"
+    }
+  },
+  {
+    "city" : "Perth",
+    "date" : new Date("Jun 5, 2019 12:00:00"),
+  },
+  {
+    "city" : "Newman",
+    "date" : new Date("Jun 11, 2019 12:00:00"),
+  },{
+    "city" : "Perth",
+    "date" : new Date("Jun 25, 2019 12:00:00"),
+  },{
+    "city" : "Berlin",
+    "date" : new Date("Jun 28, 2019 12:00:00"),
+  }
+];
+class Arrival {
+  constructor(city, date, flights) {
+    this.city = city;
+    this.date = date;
+    this.flights = flights;
+  }
+}
+function addDestination(event){
+  city = document.getElementById("new-city").value;
+  date = document.getElementById("new-date").value;
+  flights = document.getElementById("new-flights").value;
+  //comma separate flights into array
+  event.preventDefault();
+  console.log(city + date + flights);
+  console.log(arrivals.length);
+  let newArrival = {
+    "city" : city, 
+    "date" : date,
+    "flights" : flights
+  }; 
+  arrivals.push(newArrival);
+  console.log(arrivals);
+  upcoming(arrivals);
+}
+
+document.getElementById("add-destination").addEventListener("submit", addDestination);
+
+
+
+// update array, leave last destination at first index
+function updateDest(arr){
+  now = new Date().getTime;
+  console.log(arr[1][1]);
+  if(arr[1][1] < now){
+    arr.shift();
+  }
+  
+}
+
+updateDest(arrivals);
+//setInterval(updateDest, 86400000, arrivals);
+console.log(arrivals);
+
+function calculatePostion(city) {
+  minLon = city.lon - 18;
+  minLat = city.lat - 10;
+  maxLon = city.lon + 18;
+  maxLat = city.lat + 10;
+  console.log(minLon);
+  document.getElementById("map-div").innerHTML = `<iframe id='map' frameborder='0' marginheight='0' marginwidth='0' src='https://www.openstreetmap.org/export/embed.html?bbox=${minLon}%2C${minLat}%2C${maxLon}%2C${maxLat}&amp;layer=mapnik&amp;marker=${city.lat}%2C${city.lon}'></iframe>`
+}
+let current = arrivals[0];
+let next = arrivals[1];
+let currPosition = DESTINATIONS[current.city];
+let nextPosition = DESTINATIONS[next.city];
+calculatePostion(currPosition);
+
+let preposition = "in"
+if (currPosition.name == "Work"){
+  preposition = "at";
+} else if (currPosition.name == "Plane") {
+  preposition = "en route to";
+}
+document.getElementById("location").innerHTML = `Zac is ${preposition} ${currPosition.name}`
+
 // Set the date we're counting down to
-var countDownDate = new Date("May 17, 2019 12:00:00").getTime();
+var countDownDate = next.date;
 
-var date = new Date("2019-05-17")
+var date = next.date;
 
-document.getElementById("date").innerHTML = date
-// Update the count down every 1 second
-var x = setInterval(function() {
-
+function countDown(date, location, elementID){
   // Get todays date and time
   var now = new Date().getTime();
 
   // Find the distance between now and the count down date
-  var distance = countDownDate - now;
+  var distance = date - now;
 
   // Time calculations for days, hours, minutes and seconds
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -20,12 +141,29 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // Display the result in the element with id="demo"
-  document.getElementById("countdown").innerHTML = days + " days " + hours + " hours "
+  document.getElementById(elementID).innerHTML = location + ": " + days + " days " + hours + " hours "
   + minutes + " minutes " + seconds + " seconds ";
 
   // If the count down is finished, write some text 
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("countdown").innerHTML = "ZAC IS HOME!!";
+    document.getElementById(elementID).innerHTML = `Zac has arrived in ${location}`;
   }
-}, 1000);
+}
+document.getElementById("date").innerHTML = date
+// Call countDown function and update the count down every 1000 milliseconds (1s)
+var x = setInterval(countDown, 1000, countDownDate, nextPosition.name, "countdown");
+
+
+function upcoming(destArr) {
+  // get element with id "upcoming"
+  let upcomingElem = document.getElementById("upcoming");
+  // clean html
+  upcomingElem.innerHTML = "";
+  // for every entry in the array...
+  for (let i = 2; i < destArr.length; i++){
+    // ...create list element
+    upcomingElem.innerHTML = `${upcomingElem.innerHTML}<li><b>${destArr[i].city}</b>\t${destArr[i].date}</li>`;
+  }
+}
+upcoming(arrivals);

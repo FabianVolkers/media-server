@@ -19,12 +19,21 @@
 <main>
   <section id="countdown-section">
     <h1 id="title">WhenIsZacComingHome.com</h1>
+    <p id="location"></p>
     <p id="countdown"></p>
     <p id="date"></p>
+    <hr>
+    <ul id="upcoming"></ul>
+    <script src="js/zac_flights.php"></script>
+    <form id="add-destination">
+      <input id="new-city" type="text" required>
+      <input id="new-date" type="date" required>
+      <input id="new-flights" type="text" required>
+      <input type="submit" href="">
+    </form>
   </section>
   <section id="map-section">
-<div id="map-div">
-    <iframe id="map" frameborder="0" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=88.51444244384766%2C-44.71685554176402%2C140.80936431884768%2C-17.394381203596815&amp;layer=mapnik&amp;marker=-32.065555810864744%2C115.7190338134766"></iframe></div>
+<div id="map-div"><!--map iframe is being set by function calculatePosition in zac.js--></div>
   </section>
   <footer>
   <hr>
@@ -35,4 +44,5 @@
 </body>
 <!-- JS -->
 <script src="./js/zac.js"></script>
+<!--<script src="./js/data.json"></script>-->
 </html>
