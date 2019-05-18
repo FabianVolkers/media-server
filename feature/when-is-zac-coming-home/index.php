@@ -26,38 +26,16 @@
     <ul id="upcoming"></ul>
         <ul>
     <?php
-    echo "Hello World!";
-    $dataFile = fopen("js/data.json", "r") or die ("Unable to open file");
-    $json = file_get_contents("js/data.json");
-    $jsonIterator = new RecursiveIteratorIterator(
-        new RecursiveArrayIterator(json_decode($json, TRUE)),
-        RecursiveIteratorIterator::SELF_FIRST);
-    /*
-    foreach ($jsonIterator as $key => $val) {
-        if(is_array($val)) {
-            echo "<li><b>" . $val["city"] . "</b>  " . $val["date"] . "</li>";
-        } else {
-            //echo "$key => $val\n";
-        }
-    }
-    echo fread(dataFile, filesize("data.json"));
-    fclose($dataFile);
-    */
     $json_a = json_decode($json, TRUE);
+    $counter = 0;
     foreach($json_a as $value) {
-        echo strtotime($value["date"]);
-        echo strtotime(date("Y-m-d"));
         if(strtotime($value["date"]) > strtotime(date("Y-m-d"))){
-            echo "<li><b>" . $value["city"] . "</b>  " . $value["date"] . "</li>";
+            if($counter == 0){
+                $counter++;
+            }
+            echo "<li><b>" . $value["city"] . "</b>  " . date_format("l, j F Y",$value["date"]) . "</li>";
         }
     }
-    /*
-    for ($i = 0; $i < count($json_a); $i++){
-        if(strtotime($json[$i]["date"]) > date()){
-            echo 
-        }
-    }
-    */
     ?>
     </ul>
     <form id="add-destination">
