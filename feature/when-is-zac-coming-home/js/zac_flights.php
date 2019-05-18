@@ -5,7 +5,10 @@
         $myFile = fopen("data.json", "a") or die ("Unable to open file");
         $file = file_get_contents("data.json");
         $data = json_decode($file);
-        $data[count($data)]["city"] = $_POST["new-city"];
+        $city = $_POST["new-city"];
+        $city = "Berlin";
+        echo $city;
+        $data[count($data)]["city"] = $city;
         $city = $_POST["new-city"];
         $date = strToTime(POST["new-date"]);
         echo $_POST["new-date"];
