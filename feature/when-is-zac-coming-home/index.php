@@ -26,11 +26,17 @@
     <ul id="upcoming"></ul>
         <ul>
     <?php
+    $json = file_get_contents("js/data.json");
     $json_a = json_decode($json, TRUE);
+    $counter = 0;
     foreach($json_a as $value) {
-        //if(strtotime($value["date"]) > strtotime(date("Y-m-d"))){
-            echo "<li><b>" . $value["city"] . "</b>  " . $value["date"] . "</li>";
-        //}
+        if(strtotime($value["date"]) > strtotime(date("Y-m-d"))){
+            if($counter == 0){
+                $counter++;
+            } else {
+                echo "<li><b>" . $value["city"] . "</b>  " . $value["date"] . "</li>";
+            }
+        }
     }
     ?>
     </ul>
