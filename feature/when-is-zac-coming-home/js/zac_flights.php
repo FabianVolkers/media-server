@@ -8,6 +8,7 @@
         echo POST["new-flights"];
         $destinationObject = "{'city' : " . $city . ",'date' : ". $date . "},";
         fwrite($myFile, $destinationObject);
+        fclose($myFile);
       ?>
 </body>
 </html>
