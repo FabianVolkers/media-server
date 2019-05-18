@@ -45,8 +45,17 @@
     */
     $json_a = json_decode($json, TRUE);
     foreach($json_a as $value) {
-        echo "<li><b>" . $value["city"] . "</b>  " . $value["date"] . "</li>";
+        if(strtotime($value["date"]) > date()){
+            echo "<li><b>" . $value["city"] . "</b>  " . $value["date"] . "</li>";
+        }
     }
+    /*
+    for ($i = 0; $i < count($json_a); $i++){
+        if(strtotime($json[$i]["date"]) > date()){
+            echo 
+        }
+    }
+    */
     ?>
     </ul>
     <form id="add-destination">
