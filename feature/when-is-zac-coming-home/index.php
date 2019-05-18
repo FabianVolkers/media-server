@@ -41,9 +41,9 @@
     ?>
     </ul>
     <form id="add-destination" action="js/zac_flights.php" method="post">
-      <input id="new-city" type="text" required>
-      <input id="new-date" type="date" required>
-      <input id="new-flights" type="text" required>
+      <input id="new-city" name="new-city" type="text" required>
+      <input id="new-date" name="new-date" type="date" required>
+      <input id="new-flights" name="new-flights" type="text" required>
       <input type="submit">
     </form>
   </section>
