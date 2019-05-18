@@ -1,6 +1,7 @@
 <html>
-    <body>
-<?php
+
+<body>
+    <?php
         $myFile = fopen("data.json", "a") or die ("Unable to open file");
         $city = POST["new-city"];
         $date = strToTime(POST["new-date"]);
@@ -11,4 +12,5 @@
         fclose($myFile);
       ?>
 </body>
+
 </html>
