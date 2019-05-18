@@ -24,7 +24,12 @@
     <p id="date"></p>
     <hr>
     <ul id="upcoming"></ul>
-    <script type="text/javascript" src="js/zac_flights.php"></script>
+    <?php
+    echo "Hello World!";
+    $dataFile = fopen("data.json", "r") or die ("Unable to open file");
+    echo fread(dataFile, filesize("data.json"));
+    fclose($dataFile);
+    ?>
     <form id="add-destination">
       <input id="new-city" type="text" required>
       <input id="new-date" type="date" required>
