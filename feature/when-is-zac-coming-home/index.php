@@ -35,9 +35,9 @@
     
     foreach ($jsonIterator as $key => $val) {
         if(is_array($val)) {
-            echo "<li>" . $val["city"];
+            echo "<li>" . $val["city"] . $val["date"] . "</li>";
         } else {
-            echo "$key => $val\n";
+            //echo "$key => $val\n";
         }
     }
     echo fread(dataFile, filesize("data.json"));
