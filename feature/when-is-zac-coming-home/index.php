@@ -27,6 +27,18 @@
     <?php
     echo "Hello World!";
     $dataFile = fopen("js/data.json", "r") or die ("Unable to open file");
+    $json = file_get_contents("js/data.json");
+    $jsonIterator = new RecursiveIteratorIterator(
+        new RecursiveArrayIterator(json_decode($json, TRUE)),
+        RecursiveIteratorIterator::SELF_FIRST);
+    
+    foreach ($jsonIterator as $key => $val) {
+        if(is_array($val)) {
+            echo "$key:\n";
+        } else {
+            echo "$key => $val\n";
+        }
+    }
     echo fread(dataFile, filesize("data.json"));
     fclose($dataFile);
     ?>
