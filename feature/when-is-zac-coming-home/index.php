@@ -24,6 +24,7 @@
     <p id="date"></p>
     <hr>
     <ul id="upcoming"></ul>
+        <ul>
     <?php
     echo "Hello World!";
     $dataFile = fopen("js/data.json", "r") or die ("Unable to open file");
@@ -34,7 +35,7 @@
     
     foreach ($jsonIterator as $key => $val) {
         if(is_array($val)) {
-            echo "$key:\n";
+            echo "<li>" . $val["city"];
         } else {
             echo "$key => $val\n";
         }
@@ -42,6 +43,7 @@
     echo fread(dataFile, filesize("data.json"));
     fclose($dataFile);
     ?>
+    </ul>
     <form id="add-destination">
       <input id="new-city" type="text" required>
       <input id="new-date" type="date" required>
