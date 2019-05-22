@@ -23,10 +23,7 @@
         {
           //print_r($a);
           $date_a = $a["date"];
-          //echo $b["date"] . " from arr \n";
-          var_dump($b);
           $date_b = $b["date"];
-          //echo $date_b . "\n";
             if ($date_a == $date_b) {
                 return 0;
             }
@@ -34,10 +31,10 @@
         }
 
         uasort($destinations, 'cmp');
-        //print_r($destinations);
         $result = file_put_contents('data.json', json_encode($destinations));
         if ($result != FALSE){
-          echo "<h1>Submission successfull</h1>";
+          echo "<h1>Submission successful</h1>";
+          print_r($destinationArray);
           echo "<a href='../../'>return?</a>";
         }
       }
