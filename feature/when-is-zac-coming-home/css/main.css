@@ -5,6 +5,11 @@
   font-size: 45px;
 }
 
+h1 {
+  font-size: 50px;
+  padding-top: 10px;
+}
+
 .hidden {
   display: none;
 }
@@ -35,14 +40,9 @@ main {
   padding: 5px;
 }
 
-#location {
-  font-size: 50px;
-  padding-top: 10px;
-}
+
 
 #upcoming-h1 {
-  font-size: 50px;
-  padding-top: 10px;
   text-align: right;
 }
 
@@ -64,7 +64,7 @@ h2 {
   display: inline-block;
 }
 #form-toggle {
-  text-align: cnter;
+  text-align: ;
 }
 
 #map-div {
@@ -90,6 +90,12 @@ footer p{
 
 /* For mobile phones */
 @media only screen and (max-width: 800px), only screen and (max-device-width:800px){
+  #title {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 80px;
+  }
   #wrapper {
     flex-direction: column;
   }
@@ -102,23 +108,31 @@ footer p{
   text-align: left;
 }
 #upcoming-h1 {
-  font-size: 50px;
   text-align: left;
+}
+h1 {
+  font-size: 70px;
 }
 h2 {
   text-align: left;
-  font-size: 40px;
+  font-size: 60px;
 }
 #upcoming-php {
   text-align: left;
-  font-size: 25px;
+  font-size: 40px;
 }
-  #title {
-  text-align: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-size: 60px;
+#add-destination {
+  font-size: 40px;
+  text-align: left;
 }
+#add-destination input {
+  width: 100%;
+}
+#form-toggle {
+  text-align: left;
+  font-size: 40px;
+}
+  
   #countdown-section{
   padding-bottom: 5vh;
 }
@@ -131,5 +145,9 @@ h2 {
   #map-section {
   height: 50vh;
   margin-bottom: 15vh;
+}
+footer {
+  font-size: 30px;
+  min-height: 0;
 }
 }
