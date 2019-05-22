@@ -96,13 +96,28 @@ footer p{
   #map-div {
   margin-left: 2.5vw;
   width: 95vw;
-  height: 70vh;
+  height: 50vh;
+}
+#upcoming-div {
+  text-align: left;
+}
+#upcoming-h1 {
+  font-size: 50px;
+  text-align: left;
+}
+h2 {
+  text-align: left;
+  font-size: 40px;
+}
+#upcoming-php {
+  text-align: left;
+  font-size: 25px;
 }
   #title {
   text-align: center;
-  padding-top: 5vh;
-  padding-bottom: 5vh;
-  font-size: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 60px;
 }
   #countdown-section{
   padding-bottom: 5vh;
