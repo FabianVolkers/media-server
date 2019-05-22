@@ -24,67 +24,6 @@ const DESTINATIONS = {
   
 }
 
-arrival = {
-  "city" : "Berlin",
-  "date" : new Date("Jun 5, 2019 12:00:00"),
-  "flights" : {
-    "leg1" : "SQ214"
-  }
-}
-
-
-
-let arrivals = [
-  {
-    "city" : "Berlin", 
-    "date" : new Date("May 17, 2019 12:00:00"),
-    "flights" : {
-      "leg1" : "SQ214"
-    }
-  },
-  {
-    "city" : "Perth",
-    "date" : new Date("Jun 5, 2019 12:00:00"),
-  },
-  {
-    "city" : "Newman",
-    "date" : new Date("Jun 11, 2019 12:00:00"),
-  },{
-    "city" : "Perth",
-    "date" : new Date("Jun 25, 2019 12:00:00"),
-  },{
-    "city" : "Berlin",
-    "date" : new Date("Jun 28, 2019 12:00:00"),
-  }
-];
-class Arrival {
-  constructor(city, date, flights) {
-    this.city = city;
-    this.date = date;
-    this.flights = flights;
-  }
-}
-function addDestination(event){
-  city = document.getElementById("new-city").value;
-  date = document.getElementById("new-date").value;
-  flights = document.getElementById("new-flights").value;
-  //comma separate flights into array
-  event.preventDefault();
-  console.log(city + date + flights);
-  console.log(arrivals.length);
-  let newArrival = {
-    "city" : city, 
-    "date" : date,
-    "flights" : flights
-  }; 
-  arrivals.push(newArrival);
-  console.log(arrivals);
-  upcoming(arrivals);
-}
-
-document.getElementById("add-destination").addEventListener("submit", addDestination);
-
-
 
 // update array, leave last destination at first index
 function updateDest(arr){
@@ -96,9 +35,9 @@ function updateDest(arr){
   
 }
 
-updateDest(arrivals);
+//updateDest(arrivals);
 //setInterval(updateDest, 86400000, arrivals);
-console.log(arrivals);
+//console.log(arrivals);
 
 function calculatePostion(city) {
   minLon = city.lon - 18;
@@ -108,10 +47,17 @@ function calculatePostion(city) {
   console.log(minLon);
   document.getElementById("map-div").innerHTML = `<iframe id='map' frameborder='0' marginheight='0' marginwidth='0' src='https://www.openstreetmap.org/export/embed.html?bbox=${minLon}%2C${minLat}%2C${maxLon}%2C${maxLat}&amp;layer=mapnik&amp;marker=${city.lat}%2C${city.lon}'></iframe>`
 }
-let current = arrivals[0];
-let next = arrivals[1];
+
+let current = {};
+current.city = document.getElementById("current-city").innerHTML;
+current.date = document.getElementById("current-date").innerHTML;
+let next = {};
+next.city = document.getElementById("next-city").innerHTML;
+next.date = new Date(document.getElementById("next-date").innerHTML);
+console.log(next.date);
 let currPosition = DESTINATIONS[current.city];
 let nextPosition = DESTINATIONS[next.city];
+console.log(current + next);
 calculatePostion(currPosition);
 
 let preposition = "in"
@@ -150,20 +96,7 @@ function countDown(date, location, elementID){
     document.getElementById(elementID).innerHTML = `Zac has arrived in ${location}`;
   }
 }
-document.getElementById("date").innerHTML = date
+document.getElementById("date").innerHTML = date.toDateString();
 // Call countDown function and update the count down every 1000 milliseconds (1s)
 var x = setInterval(countDown, 1000, countDownDate, nextPosition.name, "countdown");
 
-
-function upcoming(destArr) {
-  // get element with id "upcoming"
-  let upcomingElem = document.getElementById("upcoming");
-  // clean html
-  upcomingElem.innerHTML = "";
-  // for every entry in the array...
-  for (let i = 2; i < destArr.length; i++){
-    // ...create list element
-    upcomingElem.innerHTML = `${upcomingElem.innerHTML}<li><b>${destArr[i].city}</b>\t${destArr[i].date}</li>`;
-  }
-}
-upcoming(arrivals);

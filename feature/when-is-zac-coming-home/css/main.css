@@ -4,6 +4,10 @@
     padding-top: 50px;
     font-size: 45px;
   }
+
+  .hidden {
+    display: none;
+  }
   
   main {
     background-color: #c5d5c5;
@@ -16,6 +20,14 @@
   #countdown, #location {
     font-size: 50px;
     padding-top: 10px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+  #upcoming-php {
+    list-style: none;
+    text-align: center;
   }
   
   #map-section {
