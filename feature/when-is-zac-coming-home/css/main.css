@@ -1,105 +1,135 @@
 
 #title {
-    text-align: center;
-    padding-top: 50px;
-    font-size: 45px;
-  }
+  text-align: center;
+  padding-top: 50px;
+  font-size: 45px;
+}
 
-  .hidden {
-    display: none;
-  }
-  
-  main {
-    background-color: #c5d5c5;
-  }
-  main p {
-    text-align: center;
-    
-  }
-  
-  #countdown, #location {
-    font-size: 50px;
-    padding-top: 10px;
-  }
+.hidden {
+  display: none;
+}
 
-  h2 {
-    text-align: center;
-  }
-  #upcoming-php {
-    list-style: none;
-    text-align: center;
-  }
+#countdown-section {
+  min-height: 90vh;
+}
+main {
+  background-color: #c5d5c5;
+}
+
+
+#wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#current-div {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+#upcoming-div {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  padding: 5px;
+}
+
+#location {
+  font-size: 50px;
+  padding-top: 10px;
+}
+
+#upcoming-h1 {
+  font-size: 50px;
+  padding-top: 10px;
+  text-align: right;
+}
+
+h2 {
+  text-align: center;
+}
+#upcoming-php {
+  list-style: none;
+  text-align: right;
+  font-size: 25px;
+}
+
+#add-destination {
+  display: none;
+  text-align: right;
+}
+
+#add-destination label{
+  display: inline-block;
+}
+#form-toggle {
+  text-align: cnter;
+}
+
+#map-div {
+  width: 50vw;
+  height: 400px;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+footer {
+  background-color: #e3e0cc;
+  padding-bottom: 5px;
+  min-height: 10vh;
+}
+footer p{
+  text-align: center;
   
-  #map-section {
-    height: 400px;
-  }
-  
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 800px){
   #map-div {
-    margin-left: 25vw;
-    width: 50vw;
-    height: 100%;
-  }
-  
-  #map {
-    width: 100%;
-    height: 100%;
-    scrolling: no;
-    border: 1px solid black;
-  }
-  
-  footer {
-    background-color: #e3e0cc;
-    padding-bottom: 10px;
-  }
-  footer p{
-    text-align: center;
-    
-  }
-  
-  /* For mobile phones */
-  @media only screen and (max-width: 800px){
-    #map-div {
-    margin-left: 2.5vw;
-    width: 95vw;
-    height: 100%;
-  }
-    #title {
-    text-align: center;
-    padding-top: 50px;
-    font-size: 25px;
-  }
-    #countdown {
-    font-size: 30px;
-    }
-    #map-section {
- 
-  }
+  margin-left: 2.5vw;
+  width: 95vw;
+  height: 100%;
+}
+  #title {
+  text-align: center;
+  padding-top: 50px;
+  font-size: 25px;
+}
+  #countdown {
+  font-size: 30px;
   }
 
-   /* For mobile phones */
-   @media only screen and (max-device-width:800px){
-    #map-div {
-    margin-left: 2.5vw;
-    width: 95vw;
-    height: 100%;
+}
+
+ /* For mobile phones */
+ @media only screen and (max-device-width:800px){
+  #map-div {
+  margin-left: 2.5vw;
+  width: 95vw;
+  height: 100%;
+}
+  #title {
+  text-align: center;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  font-size: 40px;
+}
+  #countdown-section{
+  padding-bottom: 5vh;
+}
+  #countdown {
+  font-size: 50px;
   }
-    #title {
-    text-align: center;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-    font-size: 40px;
+  #date {
+      font-size: 30px;
   }
-    #countdown-section{
-    padding-bottom: 5vh;
-  }
-    #countdown {
-    font-size: 50px;
-    }
-    #date {
-        font-size: 30px;
-    }
-    #map-section {
-    height: 50vh;
-    margin-bottom: 15vh;
-  }
-  }
+  #map-section {
+  height: 50vh;
+  margin-bottom: 15vh;
+}
+}

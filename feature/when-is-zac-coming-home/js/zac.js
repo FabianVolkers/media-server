@@ -71,7 +71,6 @@ document.getElementById("location").innerHTML = `Zac is ${preposition} ${currPos
 // Set the date we're counting down to
 var countDownDate = next.date;
 
-var date = next.date;
 
 function countDown(date, location, elementID){
   // Get todays date and time
@@ -96,7 +95,15 @@ function countDown(date, location, elementID){
     document.getElementById(elementID).innerHTML = `Zac has arrived in ${location}`;
   }
 }
-document.getElementById("date").innerHTML = date.toDateString();
+
 // Call countDown function and update the count down every 1000 milliseconds (1s)
 var x = setInterval(countDown, 1000, countDownDate, nextPosition.name, "countdown");
+
+
+function toggleForm() {
+  var form = document.getElementById("add-destination");
+  form.style.display = form.style.display == "block" ? "none" : "block";
+  var button = document.getElementById("form-toggle-btn");
+  button.value = button.value == "Log In" ? "Log Out" : "Log In";
+}
 

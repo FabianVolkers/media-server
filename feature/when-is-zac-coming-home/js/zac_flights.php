@@ -2,26 +2,45 @@
 
 <body>
     <?php
-        $myFile = fopen("data.json", "a") or die ("Unable to open file");
+    $PASSWORD = "Summer2019!";
+
+        if($_POST["password"] != $PASSWORD){
+          echo "<h1>Invalid Password, please try again</h2>";
+          echo "<a href='../../'>return?</a>";
+        } else {
         $file = file_get_contents("data.json");
-        $data = json_decode($file);
-        $city = "City";
+        $destinations = json_decode($file, TRUE);
+
         $city = $_POST['new-city'];
-        $date = "Date";
         $date = strToTime($_POST["new-date"]);
         $flights = explode(",", $_POST["new-flights"]);
-        
-        echo $city;
-        echo $date;
-        $data[count($data)]["city"] = $city;
-        $data[count($data)]["date"] = $date;
-        $data[count($data)]["flights"] = $flights;
-        
-        //echo $_POST["new-flights"];
-        $destinationObject = "{'city' : " . $city . ",'date' : ". $date  . ",'flights' : " . $flights . "},";
-        echo $destinationObject;
-        file_put_contents('data.json',json_encode($data));
-        fclose($myFile);
+
+        $destinationArray = array("city" => $city, "date" => $date, "flights" => $flights);
+
+        array_push($destinations, $destinationArray);
+
+        function cmp($a, $b)
+        {
+          //print_r($a);
+          $date_a = $a["date"];
+          //echo $b["date"] . " from arr \n";
+          var_dump($b);
+          $date_b = $b["date"];
+          //echo $date_b . "\n";
+            if ($date_a == $date_b) {
+                return 0;
+            }
+            return ($date_a < $date_b) ? -1 : 1;
+        }
+
+        uasort($destinations, 'cmp');
+        //print_r($destinations);
+        $result = file_put_contents('data.json', json_encode($destinations));
+        if ($result != FALSE){
+          echo "<h1>Submission successfull</h1>";
+          echo "<a href='../../'>return?</a>";
+        }
+      }
       ?>
 </body>
 
