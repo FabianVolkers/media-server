@@ -92,7 +92,7 @@
       <hr>
       <?php
 
-$counter_name = "data/counter.txt";
+$counter_name = "../../data/when-is-zac-coming-home/counter.txt";
 
 // Check if a text file exists.
 // If not create one and initialize it to zero.
@@ -116,7 +116,7 @@ $f = fopen($counter_name, "w");
 fwrite($f, $counterVal);
 fclose($f);
 }
-$counterVal = sprintf("%06d", $counterVal);
+$counterVal = sprintf("%05d", $counterVal);
 echo "<p>You are visitor number " . $counterVal . " to this site</p>";
 
 ?>

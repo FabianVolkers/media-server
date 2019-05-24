@@ -5,7 +5,7 @@
     $pswd = "Summer2019!";
     $PASSWORD = password_hash($pswd, PASSWORD_DEFAULT);
         if(password_verify($_POST["password"], $PASSWORD)) {
-        $file = file_get_contents("../data/data.json");
+        $file = file_get_contents("../../../data/when-is-zac-coming-home/data.json");
         $destinations = json_decode($file, TRUE);
 
         $city = $_POST['new-city'];
@@ -28,7 +28,7 @@
         }
 
         uasort($destinations, 'cmp');
-        $result = file_put_contents('../data/data.json', json_encode($destinations));
+        $result = file_put_contents('../../../data/when-is-zac-coming-home/data.json', json_encode($destinations));
         if ($result != FALSE){
           echo "<h1>Submission successful</h1>";
           echo "<h3>" . $destinationArray["city"] . "</h3>";
