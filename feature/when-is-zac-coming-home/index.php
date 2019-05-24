@@ -39,7 +39,7 @@
           <ul id="upcoming-php">
             <?php
     date_default_timezone_set('Europe/Berlin');
-    $json = file_get_contents("js/data.json");
+    $json = file_get_contents("data/data.json");
     $json_a = json_decode($json, TRUE);
     $counter = 0;
     foreach($json_a as $value) {
@@ -90,12 +90,42 @@
     </section>
     <footer>
       <hr>
+      <?php
+
+$counter_name = "data/counter.txt";
+
+// Check if a text file exists.
+// If not create one and initialize it to zero.
+if (!file_exists($counter_name)) {
+$f = fopen($counter_name, "w");
+fwrite($f,"0");
+fclose($f);
+}
+
+// Read the current value of our counter file
+$f = fopen($counter_name,"r");
+$counterVal = fread($f, filesize($counter_name));
+fclose($f);
+
+// Has visitor been counted in this session?
+// If not, increase counter value by one
+if(!isset($_SESSION['hasVisited'])){
+$_SESSION['hasVisited']="yes";
+$counterVal++;
+$f = fopen($counter_name, "w");
+fwrite($f, $counterVal);
+fclose($f);
+}
+$counterVal = sprintf("%06d", $counterVal);
+echo "<p>You are visitor number " . $counterVal . " to this site</p>";
+
+?>
       <p>Written and coded by <a href="https://fabianvolkers.com/" target="_blank">Fabian Volkers</a> 2019</p>
     </footer>
   </main>
 </body>
 <!-- JS -->
 <script src="js/zac.js"></script>
-<!--<script src="./js/data.json"></script>-->
+<!--<script src="./data/data.json"></script>-->
 
 </html>

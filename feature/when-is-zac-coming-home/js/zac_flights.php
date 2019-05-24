@@ -2,13 +2,10 @@
 
 <body>
     <?php
-    $PASSWORD = "Summer2019!";
-
-        if($_POST["password"] != $PASSWORD){
-          echo "<h1>Invalid Password, please try again</h2>";
-          echo "<a href='../../'>return?</a>";
-        } else {
-        $file = file_get_contents("data.json");
+    $pswd = "Summer2019!";
+    $PASSWORD = password_hash($pswd, PASSWORD_DEFAULT);
+        if(password_verify($_POST["password"], $PASSWORD)) {
+        $file = file_get_contents("../data/data.json");
         $destinations = json_decode($file, TRUE);
 
         $city = $_POST['new-city'];
@@ -31,13 +28,17 @@
         }
 
         uasort($destinations, 'cmp');
-        $result = file_put_contents('data.json', json_encode($destinations));
+        $result = file_put_contents('../data/data.json', json_encode($destinations));
         if ($result != FALSE){
           echo "<h1>Submission successful</h1>";
-          print_r($destinationArray);
+          echo "<h3>" . $destinationArray["city"] . "</h3>";
+          echo "<h3>" . date('l, j F Y', $destinationArray["date"]) . "</h3>";
           echo "<a href='../../'>return?</a>";
         }
-      }
+      } else {
+        echo "<h1>Invalid Password, please try again</h2>";
+        echo "<a href='../../'>return?</a>";
+      } 
       ?>
 </body>
 
